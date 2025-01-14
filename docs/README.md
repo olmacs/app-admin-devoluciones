@@ -23,6 +23,4 @@ An example admin app that adds a menu button to the admin sidebar and a navigati
 3. `vtex link`
 
 4. Navigate to `workspace--account.myvtex.com/admin/app/example`
-
-
   // Prueba Nathi
