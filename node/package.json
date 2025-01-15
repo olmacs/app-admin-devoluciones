@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@vtex/clients": "2.19.0",
     "co-body": "^6.0.0",
     "ramda": "^0.25.0"
   },
@@ -11,7 +12,9 @@
     "@vtex/api": "6.48.0",
     "@vtex/test-tools": "^1.0.0",
     "@vtex/tsconfig": "^0.5.6",
-    "typescript": "5.5.3"
+    "typescript": "5.5.3",
+    "vtex.admin-example": "https://grupo4--qamkpmovilidadco.myvtex.com/_v/private/typings/linked/v1/vtex.admin-example@0.0.13+build1736953960/public/@types/vtex.admin-example",
+    "vtex.styleguide": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.146.13/public/@types/vtex.styleguide"
   },
   "resolutions": {
     "@types/testing-library__dom": "6.12.1",

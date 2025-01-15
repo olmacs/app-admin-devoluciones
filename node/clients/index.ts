@@ -1,4 +1,6 @@
 import { IOClients } from '@vtex/api'
+import { masterDataFor } from '@vtex/clients'
+import type { Return } from 'vtex.admin-example'
 
 import Status from './status'
 
@@ -6,5 +8,9 @@ import Status from './status'
 export class Clients extends IOClients {
   public get status() {
     return this.getOrSet('status', Status)
+  }
+
+  public get returns() {
+    return this.getOrSet('returns', masterDataFor<Return>('return'))
   }
 }
