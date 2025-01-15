@@ -1,24 +1,20 @@
-import { saveReturn } from './saveReturn'
+import { ReturnProvider } from './return.provider'
 
 export const ReturnService = (ctx: Context) => {
   const {
     clients: { returns },
     vtex: { workspace },
   } = ctx
+
   returns.schema = `0.3.0-${workspace}`
+
+  const returnsProvider = new ReturnProvider(ctx)
+
   return {
-    save: saveReturn(returns),
-    list: async () => customerClient.scroll({ fields: ['_all'] }),
-    getByUserId: async () =>{}
-    getByDocumentId: async (documentId: string) =>
-      customerClient.search(
-        {
-          page: 1,
-          pageSize: 1,
-        },
-        ['first_name', 'document_id'],
-        'createdIn DESC',
-        `document_id=${documentId}`
-      ),
+    save: returnsProvider.saveReturn,
+    list: returnsProvider.listReturns,
+    get: returnsProvider.getReturn,
+    getByUserId: returnsProvider.getReturnsByUserId,
+    stateUpdate: returnsProvider.stateUpdate,
   }
 }
