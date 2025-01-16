@@ -7,6 +7,10 @@
       "description": "Return name",
       "type": "string"
     },
+    "state": {
+      "description": "Return state",
+      "type": "string"
+    },
     "itemsDevolucion": {
       "type": "array",
       "minItems": 1,
@@ -36,7 +40,6 @@
           }
         },
         "required": ["id", "quantity", "name", "price"]
-        
       }
     },
     "metodoDevolucionDinero": {
@@ -49,13 +52,9 @@
       "type": "string"
     }
   },
-  "required": [
-    "idOrden",    
-    "metodoDevolucionDinero",
-    "usuario_correo"
-  ],
+  "required": ["idOrden", "metodoDevolucionDinero", "usuario_correo", "state"],
   "v-cache": false,
-  "v-indexed": ["idOrden","usuario_correo","itemsDevolucion.id"],
+  "v-indexed": ["idOrden", "usuario_correo", "itemsDevolucion.id", "state"],
   "v-immediate-indexing": true,
   "v-security": {
     "allowGetAll": true
