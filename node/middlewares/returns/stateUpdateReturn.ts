@@ -1,7 +1,7 @@
 import { json } from 'co-body'
-import type { Return } from 'vtex.admin-example'
 
 import { ReturnService } from '../../services/returns/returnsService'
+import { Return } from '../../typings/return'
 
 export async function updateCustomer(
   ctx: Context,

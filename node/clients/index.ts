@@ -4,9 +4,9 @@ import {
   OMS as Orders,
   Invoice as Invoices,
 } from '@vtex/clients'
-import type { Return } from 'vtex.admin-example'
 
 import Status from './status'
+import { Return } from '../typings/return'
 
 // Extend the default IOClients implementation with our own custom clients.
 export class Clients extends IOClients {
