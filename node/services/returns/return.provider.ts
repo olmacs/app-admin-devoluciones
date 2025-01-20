@@ -1,5 +1,3 @@
-import type { Return } from 'vtex.admin-example'
-
 export class ReturnProvider {
   private context: Context
 
@@ -20,7 +18,12 @@ export class ReturnProvider {
   }
 
   public async listReturns() {
-    return this.returnClient.search()
+    return this.returnClient.search({
+      page: 1,
+      pageSize: 1000,
+    },
+      ['_all'],
+      'createdIn DESC',)
   }
 
   public async getReturn(id: string) {
@@ -35,11 +38,17 @@ export class ReturnProvider {
     )
   }
 
-  public async getReturnsByUserId(userId: string) {
-    return this.returnClient.getByUserId(userId)
+  public async getReturnsByUser(email: string) {
+    return this.returnClient.search({
+      page: 1,
+      pageSize: 1,
+    },
+      ['_all'],
+      'createdIn DESC',
+      `usuario_correo=${email}`)
   }
 
-  public async stateUpdate(id: string, state: string) {
-    return this.returnClient.stateUpdate(id, state)
+  public async updateReturn(id: string, state: string, note: string) {
+    return this.returnClient.update(id, { note, state })
   }
 }

@@ -1,12 +1,9 @@
-export const OrderService = (ctx: Context) => {
+export const OrderService = (ctx: Context,) => {
   const {
-    clients: { orders },
-    vtex: { workspace },
+    clients: { orders }
   } = ctx
 
-  orders.schema = `0.3.0-${workspace}`
-
   return {
-    getByUserId: orders.getUserById,
+    getByUser: (email: string) => orders.getOrdersUser(email),
   }
 }

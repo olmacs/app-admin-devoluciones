@@ -1,0 +1,27 @@
+type Return {
+    id: String
+    idOrden: String
+    state: String
+    itemsDevolucion: [ItemsDevolucion]
+    metodoDevolucionDinero: String
+    usuario_correo: String
+    note?: String
+}
+
+type ItemsDevolucion {
+  imagen?: String
+  id: String
+  quantity: String
+  name: String
+  price: Int
+}
+
+type Orders {
+    list: [ListOrders]
+}
+
+type ListOrders {
+    orderId: string
+    clientName: string
+    creationDate: Date
+}

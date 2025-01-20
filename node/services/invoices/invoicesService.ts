@@ -1,12 +1,9 @@
-export const OrderService = (ctx: Context) => {
+export const InovoiceService = (ctx: Context) => {
   const {
     clients: { invoices },
-    vtex: { workspace },
   } = ctx
 
-  invoices.schema = `0.3.0-${workspace}`
-
   return {
-    getByUserId: invoices.getUserById,
+    generateInvoice: (id: string) => invoices.generateInvoice(id),
   }
 }

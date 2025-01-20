@@ -1,9 +1,9 @@
 import { JanusClient, type InstanceOptions, type IOContext } from '@vtex/api'
 
-export default class orders extends JanusClient {
+export default class invoices extends JanusClient {
 
     private routes = {
-        getOrdersUsers: (email: string) => `/api/oms/user/orders?clientEmail=${email}`
+        generateInvoice: (oId: string) => `/api/oms/pvt/orders/${oId}/invoice`
     }
 
     constructor(context: IOContext, options?: InstanceOptions) {
@@ -15,8 +15,8 @@ export default class orders extends JanusClient {
         })
     }
 
-    public async getOrdersUser(email: string): Promise<any> {
-        return this.http.get(this.routes.getOrdersUsers(email), {
+    public async generateInvoice(oId: string): Promise<any> {
+        return this.http.get(this.routes.generateInvoice(oId), {
             metric: 'status-get',
         })
     }

@@ -14,7 +14,7 @@ export const ReturnService = (ctx: Context) => {
     save: returnsProvider.saveReturn,
     list: returnsProvider.listReturns,
     getById: returnsProvider.getReturn,
-    getByUserId: returnsProvider.getReturnsByUserId,
-    stateUpdate: returnsProvider.stateUpdate,
+    getByUser: returnsProvider.getReturnsByUser,
+    stateUpdate: returnsProvider.updateReturn,
   }
 }
