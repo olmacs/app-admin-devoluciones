@@ -24,7 +24,15 @@ export class ReturnProvider {
   }
 
   public async getReturn(id: string) {
-    return this.returnClient.search(id)
+    return this.returnClient.search(
+      {
+        page: 1,
+        pageSize: 1,
+      },
+      ['_all'],
+      'createdIn DESC',
+      `document_id=${id}`
+    )
   }
 
   public async getReturnsByUserId(userId: string) {

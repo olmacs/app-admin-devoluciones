@@ -13,7 +13,7 @@ export const ReturnService = (ctx: Context) => {
   return {
     save: returnsProvider.saveReturn,
     list: returnsProvider.listReturns,
-    get: returnsProvider.getReturn,
+    getById: returnsProvider.getReturn,
     getByUserId: returnsProvider.getReturnsByUserId,
     stateUpdate: returnsProvider.stateUpdate,
   }
