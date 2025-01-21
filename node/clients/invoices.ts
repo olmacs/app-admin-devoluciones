@@ -1,24 +1,24 @@
-import { JanusClient, type InstanceOptions, type IOContext } from '@vtex/api'
+import { JanusClient } from '@vtex/api'
+import type { InstanceOptions, IOContext } from '@vtex/api'
 
-export default class invoices extends JanusClient {
+export default class Invoices extends JanusClient {
+  private routes = {
+    generateInvoice: (oId: string) => `/api/oms/pvt/orders/${oId}/invoice`,
+  }
 
-    private routes = {
-        generateInvoice: (oId: string) => `/api/oms/pvt/orders/${oId}/invoice`
-    }
+  constructor(context: IOContext, options?: InstanceOptions) {
+    super(context, {
+      ...options,
+      headers: {
+        VtexIdclientAutCookie:
+          context.adminUserAuthToken ?? context.authToken ?? '',
+      },
+    })
+  }
 
-    constructor(context: IOContext, options?: InstanceOptions) {
-        super(context, {
-            ...options,
-            headers: {
-                VtexIdclientAutCookie: context.adminUserAuthToken ?? context.authToken ?? '',
-            },
-        })
-    }
-
-    public async generateInvoice(oId: string): Promise<any> {
-        return this.http.get(this.routes.generateInvoice(oId), {
-            metric: 'status-get',
-        })
-    }
-
+  public async generateInvoice(oId: string): Promise<any> {
+    return this.http.get(this.routes.generateInvoice(oId), {
+      metric: 'status-get',
+    })
+  }
 }

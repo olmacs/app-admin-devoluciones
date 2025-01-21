@@ -18,12 +18,14 @@ export class ReturnProvider {
   }
 
   public async listReturns() {
-    return this.returnClient.search({
-      page: 1,
-      pageSize: 1000,
-    },
+    return this.returnClient.search(
+      {
+        page: 1,
+        pageSize: 1000,
+      },
       ['_all'],
-      'createdIn DESC',)
+      'createdIn DESC'
+    )
   }
 
   public async getReturn(id: string) {
@@ -39,13 +41,15 @@ export class ReturnProvider {
   }
 
   public async getReturnsByUser(email: string) {
-    return this.returnClient.search({
-      page: 1,
-      pageSize: 1,
-    },
+    return this.returnClient.search(
+      {
+        page: 1,
+        pageSize: 1,
+      },
       ['_all'],
       'createdIn DESC',
-      `usuario_correo=${email}`)
+      `usuario_correo=${email}`
+    )
   }
 
   public async updateReturn(id: string, state: string, note: string) {

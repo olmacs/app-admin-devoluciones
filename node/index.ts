@@ -5,7 +5,6 @@ import { Clients } from './clients'
 import { mutations, queries } from './resolvers'
 import { middlewares } from './middlewares'
 
-
 const TIMEOUT_MS = 800
 
 // Create a LRU memory cache for the Status client.
@@ -53,11 +52,11 @@ export default new Service({
     resolvers: {
       // This is the resolver for the `Query.hello` field from the `hello.graphql` schema.
       Query: {
-        ...queries
+        ...queries,
       },
       Mutations: {
-        ...mutations
-      }
+        ...mutations,
+      },
     },
-  }
+  },
 })

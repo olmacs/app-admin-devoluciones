@@ -1,6 +1,6 @@
-export const OrderService = (ctx: Context,) => {
+export const OrderService = (ctx: Context) => {
   const {
-    clients: { orders }
+    clients: { orders },
   } = ctx
 
   return {

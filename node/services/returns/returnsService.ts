@@ -6,7 +6,7 @@ export const ReturnService = (ctx: Context) => {
     vtex: { workspace },
   } = ctx
 
-  returns.schema = `0.3.0-${workspace}`
+  returns.schema = `0.0.13-${workspace}`
 
   const returnsProvider = new ReturnProvider(ctx)
 
