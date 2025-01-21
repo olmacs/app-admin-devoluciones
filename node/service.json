@@ -7,11 +7,15 @@
   "workers": 1,
   "routes": {
     "returns": {
-      "path": "/_v/devoluciones/returns/:method",
+      "path": "/_v/devoluciones/returns/",
+      "public": true
+    },
+    "returnsbyId": {
+      "path": "/_v/devoluciones/returns/:id",
       "public": true
     },
     "orders": {
-      "path": "/_v/devoluciones/orders/:method",
+      "path": "/_v/devoluciones/orders/:email",
       "public": true
     }
   }

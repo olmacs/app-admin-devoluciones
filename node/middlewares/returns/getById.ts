@@ -1,6 +1,6 @@
 import { ReturnService } from '../../services/returns/returnsService'
 
-export async function getById(ctx: Context): Promise<any> {
+export async function getById(ctx: Context, next: () => Promise<unknown>) {
   const {
     vtex: {
       route: { params },
@@ -21,5 +21,5 @@ export async function getById(ctx: Context): Promise<any> {
   }
 
   ctx.set('Cache-Control', 'no-cache')
-  return ctx.body
+  next()
 }

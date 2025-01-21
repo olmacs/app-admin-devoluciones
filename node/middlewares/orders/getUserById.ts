@@ -1,17 +1,15 @@
-import { OrderService } from "../../services/orders/ordersService"
+import { OrderService } from '../../services/orders/ordersService'
 
-export async function getUserById(ctx: Context): Promise<any> {
+export async function getUserById(ctx: Context, next: () => Promise<unknown>) {
   try {
     const {
       vtex: {
         route: { params },
       },
     } = ctx
-    console.log(params)
 
     const { email } = params as { email: string }
-    console.log(email, "users")
-    const order = await OrderService(ctx).getByUser("email")
+    const order = await OrderService(ctx).getByUser(email)
 
     ctx.status = 200
     ctx.body = order
@@ -23,5 +21,5 @@ export async function getUserById(ctx: Context): Promise<any> {
   }
 
   ctx.set('Cache-Control', 'no-cache')
-  return ctx.body;
+  next()
 }
