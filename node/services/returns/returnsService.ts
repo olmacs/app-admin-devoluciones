@@ -11,10 +11,10 @@ export const ReturnService = (ctx: Context) => {
   const returnsProvider = new ReturnProvider(ctx)
 
   return {
-    save: returnsProvider.saveReturn,
-    list: returnsProvider.listReturns,
-    getById: returnsProvider.getReturn,
-    getByUser: returnsProvider.getReturnsByUser,
-    stateUpdate: returnsProvider.updateReturn,
+    save: returnsProvider.saveReturn.bind(returnsProvider),
+    list: returnsProvider.listReturns.bind(returnsProvider),
+    getById: returnsProvider.getReturn.bind(returnsProvider),
+    getByUser: returnsProvider.getReturnsByUser.bind(returnsProvider),
+    stateUpdate: returnsProvider.updateReturn.bind(returnsProvider),
   }
 }

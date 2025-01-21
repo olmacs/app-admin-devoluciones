@@ -54,7 +54,7 @@
   },
   "required": ["idOrden", "metodoDevolucionDinero", "usuario_correo", "state"],
   "v-cache": false,
-  "v-indexed": ["idOrden", "usuario_correo", "itemsDevolucion.id", "state"],
+  "v-indexed": ["idOrden", "usuario_correo", "state"],
   "v-immediate-indexing": true,
   "v-security": {
     "allowGetAll": true

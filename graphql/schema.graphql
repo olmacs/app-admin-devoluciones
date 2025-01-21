@@ -1,0 +1,9 @@
+type Query {
+  getAllReturns: [Return]
+  getReturnBtId: Return
+  getOrders: [Orders]
+}
+
+type Mutation {
+  updateReturn(dataReturn: dataReturnInput): String
+}

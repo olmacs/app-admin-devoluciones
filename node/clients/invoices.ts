@@ -1,5 +1,6 @@
 import { JanusClient } from '@vtex/api'
 import type { InstanceOptions, IOContext } from '@vtex/api'
+import type { NotificationInput, NotificationResponse } from '@vtex/clients'
 
 export default class Invoices extends JanusClient {
   private routes = {
@@ -16,9 +17,10 @@ export default class Invoices extends JanusClient {
     })
   }
 
-  public async generateInvoice(oId: string): Promise<any> {
-    return this.http.get(this.routes.generateInvoice(oId), {
-      metric: 'status-get',
-    })
+  public async generateInvoice(
+    orderId: string,
+    packageDetail: Partial<NotificationInput>
+  ): Promise<NotificationResponse> {
+    return this.http.post(this.routes.generateInvoice(orderId), packageDetail)
   }
 }

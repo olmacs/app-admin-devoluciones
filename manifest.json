@@ -15,7 +15,8 @@
     "messages": "1.x",
     "docs": "0.x",
     "node": "7.x",
-    "masterdata": "1.x"
+    "masterdata": "1.x",
+    "graphql": "1.x"
   },
   "credentialType": "absolute",
   "policies": [

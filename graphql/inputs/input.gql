@@ -1,5 +1,0 @@
-input dataReturnInput {
-    id: String
-    note: String
-    state: String
-}
