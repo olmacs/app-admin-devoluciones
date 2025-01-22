@@ -68,7 +68,7 @@ export class ReturnProvider {
       type: 'Input',
       issuanceDate: now.toISOString(),
       invoiceNumber: `DFG-${now.getTime()}`,
-      invoiceValue: items.reduce((acc, item) => acc + item.price, 0),
+      invoiceValue: items.reduce((acc, item) => acc + (Number(item.price)*Number(item.quantity)), 0),
       items: items.map((item) => ({
         id: item.id,
         price: Number(item.price),
