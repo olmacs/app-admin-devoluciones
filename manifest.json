@@ -16,7 +16,9 @@
     "docs": "0.x",
     "node": "7.x",
     "masterdata": "1.x",
-    "graphql": "1.x"
+    "graphql": "1.x",
+    "react": "3.x",
+    "admin": "0.x"
   },
   "credentialType": "absolute",
   "policies": [

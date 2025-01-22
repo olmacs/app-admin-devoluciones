@@ -1,11 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import {
-  Table,
-  IconArrowUp,
-  IconArrowDown,
-  IconShoppingCart,
-  Input,
-} from 'vtex.styleguide'
+import { Table, Input } from 'vtex.styleguide'
 import faker from 'faker'
 import { withRuntimeContext } from 'vtex.render-runtime'
 
@@ -42,19 +36,23 @@ class UsersTable extends Component<Props> {
         fontSize = 'f5'
         break
       }
+
       case 'medium': {
         fontSize = 'f6'
         break
       }
+
       case 'high': {
         fontSize = 'f7'
         break
       }
+
       default: {
         fontSize = 'f5'
         break
       }
     }
+
     return {
       properties: {
         name: {
@@ -98,6 +96,7 @@ class UsersTable extends Component<Props> {
           // you should treat empty object cases only for alwaysVisibleFilters
           return 'Any'
         }
+
         return `${
           st.verb === '=' ? 'is' : st.verb === '!=' ? 'is not' : 'contains'
         } ${st.object}`
@@ -132,12 +131,9 @@ class UsersTable extends Component<Props> {
   }
 
   public render() {
-    const {
-      items,
-      searchValue,
-      filterStatements,
-      tableDensity,
-    }: any = this.state
+    const { items, searchValue, filterStatements, tableDensity }: any =
+      this.state
+
     const {
       runtime: { navigate },
     } = this.props
@@ -157,14 +153,6 @@ class UsersTable extends Component<Props> {
             })
           }
           toolbar={{
-            density: {
-              buttonLabel: 'Line density',
-              lowOptionLabel: 'Low',
-              mediumOptionLabel: 'Medium',
-              highOptionLabel: 'High',
-              handleCallback: (density: string) =>
-                this.setState({ tableDensity: density }),
-            },
             inputSearch: {
               value: searchValue,
               placeholder: 'Search stuff...',
@@ -172,40 +160,6 @@ class UsersTable extends Component<Props> {
                 this.setState({ searchValue: value }),
               onClear: () => this.setState({ searchValue: null }),
               onSubmit: () => {},
-            },
-            download: {
-              label: 'Export',
-              handleCallback: () => alert('Callback()'),
-            },
-            upload: {
-              label: 'Import',
-              handleCallback: () => alert('Callback()'),
-            },
-            fields: {
-              label: 'Toggle visible fields',
-              showAllLabel: 'Show All',
-              hideAllLabel: 'Hide All',
-            },
-            extraActions: {
-              label: 'More options',
-              actions: [
-                {
-                  label: 'An action',
-                  handleCallback: () => alert('An action'),
-                },
-                {
-                  label: 'Another action',
-                  handleCallback: () => alert('Another action'),
-                },
-                {
-                  label: 'A third action',
-                  handleCallback: () => alert('A third action'),
-                },
-              ],
-            },
-            newLine: {
-              label: 'New',
-              handleCallback: () => alert('handle new line callback'),
             },
           }}
           filters={{
@@ -234,25 +188,6 @@ class UsersTable extends Component<Props> {
               },
             },
           }}
-          totalizers={[
-            {
-              label: 'Sales',
-              value: '420.763',
-              icon: <IconShoppingCart size={14} />,
-            },
-            {
-              label: 'Cash in',
-              value: 'R$ 890.239,05',
-              iconBackgroundColor: '#eafce3',
-              icon: <IconArrowUp color="#79B03A" size={14} />,
-            },
-
-            {
-              label: 'Cash out',
-              value: '- R$ 13.485,26',
-              icon: <IconArrowDown size={14} />,
-            },
-          ]}
           bulkActions={{
             texts: {
               secondaryActionsLabel: 'Actions',
