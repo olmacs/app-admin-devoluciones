@@ -8,8 +8,8 @@ export default async function updateReturn(
   try {
     const response = await ReturnService(ctx).stateUpdate(
       dataReturn.id,
-      dataReturn.note,
-      dataReturn.state
+      dataReturn.state,
+      dataReturn.note
     )
 
     return response

@@ -49,10 +49,16 @@ export class ReturnProvider {
   public async updateReturn(id: string, state: string, note: string) {
     const { idOrden, ...returnOrder } = await this.getReturn(id)
 
+    console.info('state', state, 'note', note)
     if (state === 'refunded') {
       const invoice = this.generateInvoice(returnOrder)
 
-      await this.invoicesClient.generateInvoice(idOrden, invoice)
+      const response = await this.invoicesClient.generateInvoice(
+        idOrden,
+        invoice
+      )
+
+      console.info('Invoice generated:', response)
     }
 
     return this.returnClient.update(id, { note, state })
@@ -68,7 +74,10 @@ export class ReturnProvider {
       type: 'Input',
       issuanceDate: now.toISOString(),
       invoiceNumber: `DFG-${now.getTime()}`,
-      invoiceValue: items.reduce((acc, item) => acc + (Number(item.price)*Number(item.quantity)), 0),
+      invoiceValue: items.reduce(
+        (acc, item) => acc + Number(item.price) * Number(item.quantity),
+        0
+      ),
       items: items.map((item) => ({
         id: item.id,
         price: Number(item.price),
