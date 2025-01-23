@@ -1,0 +1,3 @@
+mutation CHANGE_STATE_RETURN($body: dataReturnInput) {
+  updateReturn(dataReturn: $body)
+}

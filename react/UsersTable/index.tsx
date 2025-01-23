@@ -31,7 +31,7 @@ export default function UsersTable() {
   const rowClick = ({ rowData }: { rowData: any }) => {
     navigate({
       page: 'admin.app.example-detail',
-      params: { id: rowData.id },
+      params: { ...rowData },
     })
   }
   if (loading) return <Spinner />
