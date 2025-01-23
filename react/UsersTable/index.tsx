@@ -2,6 +2,7 @@ import React from 'react'
 import { EXPERIMENTAL_Table as Table, Spinner } from 'vtex.styleguide'
 // import faker from 'faker'
 import { useQuery } from 'react-apollo'
+import { useRuntime } from 'vtex.render-runtime'
 
 import GET_RETURNS from '../graphql/GetReturn.gql'
 /** Columns definition, must be an array */
@@ -24,23 +25,18 @@ const columns = [
   },
 ]
 
-// const EXAMPLE_LENGTH = 10
-// const MOCKED_DATA = [...Array(EXAMPLE_LENGTH)].map(() => ({
-//   id: faker.random.uuid(),
-//   name: faker.name.findName(),
-//   qty: faker.random.number(),
-//   costPrice: faker.random.number(),
-//   retailPrice: faker.random.number(),
-// }))
-
-const rowClick = ({ rowData }: { rowData: any }) => {
-  console.info(`Clicked ${rowData.id}`)
-  alert(`Clicked ${rowData.name} from ${rowData.location}`)
-}
 export default function UsersTable() {
   const { data, loading, error } = useQuery(GET_RETURNS)
+  const { navigate } = useRuntime()
+  const rowClick = ({ rowData }: { rowData: any }) => {
+    navigate({
+      page: 'admin.app.example-detail',
+      params: { id: rowData.id },
+    })
+  }
   if (loading) return <Spinner />
   if (error) return <div>{error.message}</div>
+
   return (
     <Table
       measures="regular"
