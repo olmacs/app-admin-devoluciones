@@ -10,7 +10,7 @@ import CHANGE_STATE_RETURN from './graphql/ChangeStateReturn.gql'
 const AdminExampleDetail: FC<Props> = ({ params }) => {
   const [changeState] = useMutation(CHANGE_STATE_RETURN, {
     variables: {
-      body: {
+      dataReturn: {
         state: 'refunded',
         note: 'Cambiado desde el admin de vtex',
         id: params.id,
